@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     public float walkSpeed = 5f;
     public Camera playerCamera;
     Vector3 cameraRotation;
+     public float timeBetweenAttacks;
+      bool alreadyAttacked;
 
     private Animator animator;
     private bool isWalking = false;
@@ -64,9 +66,21 @@ public class PlayerController : MonoBehaviour
 
     private void Shoot()
     {
+        if (!alreadyAttacked)
+        {
         Rigidbody bulletRb = Instantiate(projectile, projectilePos.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
         bulletRb.AddForce(transform.forward * 32f, ForceMode.Impulse);
         bulletRb.AddForce(transform.up * 1f, ForceMode.Impulse);
+
+        
+          alreadyAttacked = true;
+           Invoke(nameof(ResetAttack), timeBetweenAttacks);
+        }
+    }
+
+      private void ResetAttack()
+    {
+        alreadyAttacked = false;
     }
 
     // Update is called once per frame

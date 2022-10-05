@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Heart : MonoBehaviour
 {
-    public PlayerHealth playerHealth;
+    public PlayerController playerController;
     private void OnCollisionEnter(Collision other)
     {
         if (other.collider.tag == "Player")
         {
-            playerHealth.health += 10;
+            playerController.timeBetweenAttacks = 0;
             Destroy(gameObject);
         }
     }
