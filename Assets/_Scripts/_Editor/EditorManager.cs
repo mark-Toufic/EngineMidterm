@@ -21,10 +21,11 @@ public class EditorManager : MonoBehaviour
     public GameObject prefab1;
     public GameObject prefab2;
 
-    GameObject item;
+    public GameObject item;
 
     public bool instantiated = false;
 
+    UIManager ui;
 
 
 
@@ -58,13 +59,15 @@ public class EditorManager : MonoBehaviour
         editorMode = false;
 
         mainCam.enabled = true;
-        editorCam.enabled = false;  
+        editorCam.enabled = false;
+        ui = GetComponent<UIManager>();
     }  
 
     public void EnterEditorMode()
     {
         mainCam.enabled = !mainCam.enabled;
         editorCam.enabled = !editorCam.enabled;
+        ui.ToggleEditorUI();
     }
 
     public void AddItem(int itemId)

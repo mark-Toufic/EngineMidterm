@@ -23,12 +23,12 @@ public class Crab : Enemy
 
 public class Monster : Enemy
 {
-    public override string Name => "monster";
+    public override string Name => "bee";
 
     public override GameObject Create(GameObject prefab)
     {
         GameObject enemy = Instantiate(prefab);
-        Debug.Log("Monster enemy is created");
+        Debug.Log("bee enemy is created");
         return enemy;
     }
 }
